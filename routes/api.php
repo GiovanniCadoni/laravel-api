@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts/{slug}', [PostController::class, 'show']);
 
 Route::get('/types', [TypeController::class, 'index']);
 

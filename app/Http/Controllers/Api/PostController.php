@@ -15,4 +15,20 @@ class PostController extends Controller
             'success' => true,
         ]);
     }
+
+    public function show($slug) {
+        $post = Post::with('type')->where('slug', $slug)->first();
+        
+        if($post) {
+            return response()->json([
+                'results' => $post,
+                'success' => true,
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Nessun post trovato',
+            ]);
+        }
+    }
 }
